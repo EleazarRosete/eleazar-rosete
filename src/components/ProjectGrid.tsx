@@ -92,7 +92,7 @@ export default function ProjectGrid({ items, meta, emptyTitle, emptyDesc, onSele
                 custom={i} variants={chipVariants} initial="hidden" animate="visible"
                 aria-label={`View case study: ${item.title} — ${meta.badge}, ${item.tag}`}
                 style={{
-                  position: 'relative', width: '100%', aspectRatio: '1 / 1',
+                  position: 'relative', width: '100%', aspectRatio: '4 / 5',
                   border: 'none', padding: 0, cursor: 'pointer', appearance: 'none',
                   overflow: 'hidden',
                   background: 'linear-gradient(150deg, var(--bg-card) 0%, var(--bg-base) 100%)',

@@ -87,7 +87,7 @@ export default function HeroSection() {
       <div style={{ position: 'absolute', width: 260, height: 260, borderRadius: '50%', background: 'var(--glow-1)', filter: 'blur(100px)', top: '18%', left: '38%', pointerEvents: 'none', opacity: 0.5 }} />
       <div className="stage-vignette" />
 
-      <div style={{ maxWidth: 760, margin: '0 auto', padding: '128px 32px 96px', position: 'relative', zIndex: 2, width: '100%' }}>
+      <div className="hero-inner" style={{ maxWidth: 760, margin: '0 auto', padding: '128px 32px 96px', position: 'relative', zIndex: 2, width: '100%' }}>
         <motion.div {...fadeUp(0)} style={{ display: 'flex', alignItems: 'flex-start', gap: 36, flexWrap: 'wrap', marginBottom: 36 }}>
           <div style={{ position: 'relative', flexShrink: 0, zIndex: 1 }}>
             <div style={{ position: 'absolute', bottom: 'calc(100% + 14px)', left: '50%', transform: 'translateX(-50%)', zIndex: 4 }}>
@@ -157,9 +157,9 @@ export default function HeroSection() {
 
             <p style={{ fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.09em', textTransform: 'uppercase', color: 'var(--accent-violet)', margin: '6px 0 14px' }}>{HERO_ROLE}</p>
 
-            <div style={{ display: 'flex', gap: 22, marginBottom: 14 }}>
+            <div className="ig-scroll-row" style={{ display: 'flex', gap: 22, marginBottom: 14, flexWrap: 'nowrap', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
               {HERO_STATS.map((stat, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 5 }}>
+                <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 5, flexShrink: 0, whiteSpace: 'nowrap' }}>
                   <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem' }}>{stat.num}</span>
                   <span style={{ fontSize: '0.7rem', letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{stat.label}</span>
                 </div>
@@ -175,11 +175,12 @@ export default function HeroSection() {
               <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.65 }}>{HERO_TAGLINE}</p>
             </div>
 
-            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' }}>
+            <div className="hero-actions" style={{ display: 'flex', gap: 10, flexWrap: 'nowrap', alignItems: 'center' }}>
               <button
                 type="button"
                 onClick={() => setMessageOpen(true)}
                 aria-haspopup="dialog"
+                className="hero-action-btn"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: '11px 22px', borderRadius: 9,
@@ -199,6 +200,7 @@ export default function HeroSection() {
                 onClick={handleFollowClick}
                 aria-pressed={followed}
                 aria-haspopup="dialog"
+                className="hero-action-btn"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: '11px 22px', borderRadius: 9,

@@ -6,7 +6,7 @@
 
 import type { CSSProperties } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Pause, Play, Award, ArrowRight, ChevronLeft, ChevronRight, Target, Check } from 'lucide-react';
+import { MessageSquare, X, Pause, Play, Award, ArrowRight, Target, Check } from 'lucide-react';
 import { HERO_NAME, HERO_ROLE, HERO_STATS, NOTE_TEXT, AVATAR_URL } from '@/data/profile';
 import { STORY_SLIDES, SERVICE_ITEMS, VALUE_ITEMS, INTRO_CONTENT, GOALS_CONTENT, CTA_CONTENT } from '@/data/storyContent';
 import { storyItemVariants } from '@/theme/animations';
@@ -41,7 +41,7 @@ export default function AboutMeStory({ isOpen, onClose, onMessageClick, onConnec
             padding: 20,
           }}
         >
-          <div onClick={(e) => e.stopPropagation()} style={{ position: 'relative', width: '100%', maxWidth: 360 }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ position: 'relative', width: 'min(100%, 360px, calc((100vh - 40px) * 9 / 16))' }}>
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -91,8 +91,8 @@ export default function AboutMeStory({ isOpen, onClose, onMessageClick, onConnec
                 </div>
               </div>
 
-              <div onClick={goPrev} aria-label="Previous slide" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '32%', zIndex: 2, cursor: slideIndex > 0 ? 'pointer' : 'default' }} />
-              <div onClick={goNext} aria-label="Next slide" style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '68%', zIndex: 2, cursor: 'pointer' }} />
+              <div onClick={goPrev} aria-label="Previous slide" style={{ position: 'absolute', top: '5%', height: '90%', left: 0, width: '18%', zIndex: 2, cursor: slideIndex > 0 ? 'pointer' : 'default' }} />
+              <div onClick={goNext} aria-label="Next slide" style={{ position: 'absolute', top: '5%', height: '90%', right: 0, width: '18%', zIndex: 2, cursor: 'pointer' }} />
 
               <AnimatePresence mode="wait">
                 <motion.div
@@ -224,17 +224,6 @@ export default function AboutMeStory({ isOpen, onClose, onMessageClick, onConnec
                 </motion.div>
               </AnimatePresence>
             </motion.div>
-
-            {slideIndex > 0 && (
-              <button type="button" onClick={goPrev} aria-label="Previous slide" style={sideNavBtnStyle('left')}>
-                <ChevronLeft size={20} />
-              </button>
-            )}
-            {slideIndex < totalSlides - 1 && (
-              <button type="button" onClick={goNext} aria-label="Next slide" style={sideNavBtnStyle('right')}>
-                <ChevronRight size={20} />
-              </button>
-            )}
           </div>
         </motion.div>
       )}
@@ -266,13 +255,3 @@ const ctaSecondaryBtnStyle: CSSProperties = {
   fontWeight: 600, fontSize: '0.82rem', border: '1px solid var(--border-bright)', cursor: 'pointer',
   appearance: 'none', position: 'relative', zIndex: 3,
 };
-
-const sideNavBtnStyle = (side: 'left' | 'right'): CSSProperties => ({
-  position: 'absolute', [side]: -56, top: '50%', transform: 'translateY(-50%)',
-  width: 40, height: 40, borderRadius: '50%',
-  border: '1px solid var(--border-bright)',
-  background: 'var(--bg-card-hover)',
-  backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
-  color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-  cursor: 'pointer', zIndex: 3,
-});

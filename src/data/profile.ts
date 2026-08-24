@@ -9,7 +9,7 @@ import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 
 
 export const AVATAR_URL = '/eleazar.png'; // put your image in the public/ folder with this name
-export const HERO_NAME = 'Eleazar Rosete';
+export const HERO_NAME = 'ELEAZAR ROSETE';
 export const NOTE_TEXT = "Let's work together";
 export const AVAILABLE_TEXT = 'Available';
 export const HERO_ROLE = 'CRM Specialist | Automation, Data Management & Remote Support';

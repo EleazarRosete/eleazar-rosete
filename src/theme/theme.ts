@@ -22,10 +22,10 @@ export const darkVars: CSSProperties = {
   ['--accent-indigo' as any]: '#8a8a8a',
   ['--accent-cyan' as any]: '#e5e5e5',
 
-  // The hero's actual backdrop — a soft radial fade from a natural
-  // charcoal center to true black at the edges. Flat #000 reads dead on
-  // screen; this keeps it deep but alive, like the reference.
-  ['--hero-gradient' as any]: 'radial-gradient(ellipse 85% 65% at 50% 10%, #1c1c1c 0%, #101010 48%, #000000 100%)',
+  // The hero's actual backdrop — two soft radial pools, one falling
+  // from the top and one rising from the floor, sharing the same base
+  // black so they read as one connected light system, not two effects.
+  ['--hero-gradient' as any]: 'radial-gradient(ellipse 92% 78% at 50% 2%, #1f1f1f 0%, transparent 80%), radial-gradient(ellipse 88% 68% at 50% 100%, #1a1a1a 0%, transparent 82%), #000000',
 
   ['--gradient-hero' as any]: 'linear-gradient(135deg, #fafafa 0%, #737373 100%)',
   ['--gradient-btn' as any]: 'linear-gradient(135deg, #fafafa 0%, #d4d4d4 100%)',
@@ -60,14 +60,15 @@ export const lightVars: CSSProperties = {
   ['--border-bright' as any]: 'rgba(0,0,0,0.25)',
   ['--text-primary' as any]: '#0d0d0d',
   ['--text-secondary' as any]: '#525252',
-  ['--text-muted' as any]: '#a3a3a3',
+  ['--text-muted' as any]: '#6b6b6b',
 
   ['--accent-violet' as any]: '#0d0d0d',
   ['--accent-indigo' as any]: '#525252',
   ['--accent-cyan' as any]: '#262626',
 
-  // Same idea in reverse — a visible radial fade, not a flat fill.
-  ['--hero-gradient' as any]: 'radial-gradient(ellipse 85% 65% at 50% 10%, #ffffff 0%, #eeeeee 45%, #d4d4d4 100%)',
+  // Same idea in reverse — light pools top and bottom over one shared
+  // base tone, so the section reads as connected top-to-bottom.
+  ['--hero-gradient' as any]: 'radial-gradient(ellipse 92% 78% at 50% 2%, #ffffff 0%, transparent 80%), radial-gradient(ellipse 88% 68% at 50% 100%, #f2f2f2 0%, transparent 82%), #d8d8d8',
 
   ['--gradient-hero' as any]: 'linear-gradient(135deg, #0d0d0d 0%, #525252 100%)',
   ['--gradient-btn' as any]: 'linear-gradient(135deg, #0d0d0d 0%, #262626 100%)',

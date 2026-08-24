@@ -133,8 +133,9 @@ export default function ProjectCaseModal({ project, meta, onClose, onMessageClic
               .case-modal-body { grid-template-columns: 1fr 1fr; }
               .case-modal-media { border-right: 1px solid var(--border); border-bottom: none; }
               @media (max-width: 560px) {
-                .case-modal-body { grid-template-columns: 1fr !important; }
-                .case-modal-media { border-right: none !important; border-bottom: 1px solid var(--border); }
+                .case-modal-body { grid-template-columns: 1fr !important; max-height: none !important; }
+                .case-modal-media { border-right: none !important; border-bottom: 1px solid var(--border); max-height: none !important; overflow-y: visible !important; }
+                .case-modal-info { max-height: none !important; overflow-y: visible !important; }
               }
             `}</style>
 

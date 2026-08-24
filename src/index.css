@@ -153,9 +153,35 @@ body {
 .stage-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 75% 60% at 50% 28%, transparent 35%, var(--vignette-color) 100%);
+  background: radial-gradient(ellipse 78% 70% at 50% 50%, transparent 38%, var(--vignette-color) 100%);
   pointer-events: none;
   z-index: 1;
+}
+
+/* Hero gets a lot of top/bottom padding to breathe on desktop; ease it
+   back on phones so content isn't pushed unnecessarily far down. */
+@media (max-width: 640px) {
+  .hero-inner {
+    padding-top: 88px !important;
+    padding-bottom: 64px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* Message Me / Follow / theme-toggle must always sit on one line, never
+   wrap. On narrow phones there isn't room for their desktop sizing, so
+   tighten the row gap and shrink the two text buttons (icon-only toggle
+   is already a fixed 40x40 square and doesn't need it). */
+@media (max-width: 420px) {
+  .hero-actions {
+    gap: 6px !important;
+  }
+  .hero-action-btn {
+    padding: 9px 13px !important;
+    font-size: 0.78rem !important;
+    gap: 6px !important;
+  }
 }
 
 /* Glass card — frosted panel treatment (menu panels, profile cards, project cards) */
@@ -172,4 +198,13 @@ body {
   background: var(--bg-card-hover);
   border-color: var(--accent-violet);
   box-shadow: var(--shadow-card), var(--shadow-accent-glow);
+}
+
+/* IG-style horizontal scroll row (skill highlights) — scrollable but
+   with no visible scrollbar, matching the highlights-tray pattern. */
+.ig-scroll-row {
+  scrollbar-width: none;
+}
+.ig-scroll-row::-webkit-scrollbar {
+  display: none;
 }
