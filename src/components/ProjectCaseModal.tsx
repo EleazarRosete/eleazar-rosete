@@ -10,6 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ImageIcon, AlertCircle, Lightbulb, TrendingUp, ArrowRight, Briefcase, Quote, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import type { ProjectItem, TabMeta } from '@/data/projects';
 import { getProjectGalleryImages } from '@/lib/projectMedia';
+import { Icon } from '@iconify/react';
+import { TOOL_ICON_MAP } from '@/data/projects';
 
 interface ProjectCaseModalProps {
   project: ProjectItem | null;
@@ -265,6 +267,33 @@ export default function ProjectCaseModal({ project, meta, onClose, onMessageClic
                 <CaseSection icon={Lightbulb} title="My Solution" body={project.solution || project.summary} />
                 <CaseSection icon={TrendingUp} title="The Result" body={project.result || 'Result details coming soon.'} />
 
+                {project.tools && project.tools.length > 0 && (
+                  <div>
+                    <span style={{ fontSize: '0.68rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                      Tools Used
+                    </span>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
+                      {project.tools.map((tool) => {
+                        const iconStr = TOOL_ICON_MAP[tool];
+                        if (!iconStr) return null;
+                        return (
+                          <span
+                            key={tool}
+                            title={tool}
+                            style={{
+                              width: 32, height: 32, borderRadius: 8, flexShrink: 0,
+                              background: 'var(--bg-card)', border: '1px solid var(--border)',
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            }}
+                          >
+                            <Icon icon={iconStr} width={16} height={16} />
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 4 }}>
                   <button
                     type="button"
@@ -297,7 +326,7 @@ export default function ProjectCaseModal({ project, meta, onClose, onMessageClic
                       onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--accent-violet)'; e.currentTarget.style.color = 'var(--accent-violet)'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border-bright)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                     >
-                      Visit Link <ExternalLink size={13} />
+                      Visit<ExternalLink size={13} />
                     </a>
                   )}
                 </div>

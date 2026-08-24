@@ -1,14 +1,3 @@
-// ===============================
-// PROJECTS.TS — Everything shown in the "Client Projects / Products"
-// tabs and their case-study modal.
-//
-// TO ADD A NEW PROJECT: copy one of the objects below in the matching
-// array (CLIENT_PROJECTS or PRODUCT_ITEMS) and fill in your own details.
-// `tag` must be one of the values in TAG_ICON_MAP below (or add a new
-// one there too). You should not need to touch any component file for
-// this.
-// ===============================
-
 import { Globe, Cog, FileText, Mic, Briefcase, Package, type LucideIcon } from 'lucide-react';
 
 export type ProjectTag = 'CRM & Automation' | 'Web Dev' |'Virtual Assist' | 'Transcription';
@@ -18,6 +7,19 @@ export interface MediaItem {
   src?: string;
   caption: string;
 }
+
+// Add a new tool name here + its Iconify icon string to make it available
+// to any project. Browse icons at https://icon-sets.iconify.design/
+export const TOOL_ICON_MAP: Record<string, string> = {
+  'React': 'logos:react',
+  'Vite': 'logos:vitejs',
+  'Tailwind CSS': 'logos:tailwindcss-icon',
+  'Git': 'logos:git-icon',
+  'GitHub': 'mdi:github',
+  'API Integration': 'tabler:api',
+  'Hostinger': 'simple-icons:hostinger',
+  'Gmail API': 'logos:google-gmail',
+};
 
 export interface ProjectItem {
   id: string;
@@ -32,14 +34,13 @@ export interface ProjectItem {
   result: string;
   quote?: string | null;
   cta?: string;
-  hasLink: boolean;        // NEW — controls whether the "Visit Link" button shows
-  link?: string;            // NEW — the URL to visit (only used if hasLink is true)
+  hasLink: boolean;
+  link?: string;
+  tools?: (keyof typeof TOOL_ICON_MAP)[];   // NEW — tools/stack used, shown as icons in the modal
   cover: { type: 'gradient'; icon: LucideIcon };
   media: MediaItem[];
 }
 
-// Maps a project's `tag` to the icon shown on its filter chip + tile badge.
-// Add an entry here if you introduce a new tag.
 export const TAG_ICON_MAP: Record<string, LucideIcon> = {
   'Web Dev': Globe,
   'CRM & Automation': Cog,
@@ -47,7 +48,6 @@ export const TAG_ICON_MAP: Record<string, LucideIcon> = {
   'Transcription': Mic,
 };
 
-// ─── Profile sub-nav tabs ──────────────────────────────────────────────
 export type ProfileTabId = 'clientwork' | 'products';
 
 export interface ProfileTab {
@@ -73,7 +73,6 @@ export const TAB_META: Record<ProfileTabId, TabMeta> = {
   products: { badge: 'PRODUCT', badgeIcon: Package, fieldLabel: 'Product', ctaLabel: 'Ask about this product' },
 };
 
-// TODO: swap in real thumbnails/media + links once ready to publish.
 export const CLIENT_PROJECTS: ProjectItem[] = [
   {
     id: 'simple-serve',
@@ -89,6 +88,7 @@ export const CLIENT_PROJECTS: ProjectItem[] = [
     quote: null,
     hasLink: true,
     link: 'https://www.simpleserveltd.co.uk/',
+    tools: ['React', 'Vite', 'Tailwind CSS', 'Git', 'GitHub', 'API Integration', 'Hostinger', 'Gmail API'],
     cover: { type: 'gradient', icon: Globe },
     media: [
       { type: 'image', caption: 'Simple Serve homepage' },
@@ -96,8 +96,6 @@ export const CLIENT_PROJECTS: ProjectItem[] = [
   },
 ];
 
-// TODO: attach real pricing/links once ready to list.
-// This is your "Products" tab — the tools/templates you sell, not client work.
 export const PRODUCT_ITEMS: ProjectItem[] = [
 
 ];
