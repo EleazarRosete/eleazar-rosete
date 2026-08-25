@@ -263,8 +263,8 @@ export default function ProjectCaseModal({ project, meta, onClose, onMessageClic
                   )}
                 </div>
 
-                <CaseSection icon={AlertCircle} title="The Problem" body={project.problem || project.summary} />
-                <CaseSection icon={Lightbulb} title="My Solution" body={project.solution || project.summary} />
+                <CaseSection icon={AlertCircle} title="The Problem" body={project.problem || "N/A"} />
+                <CaseSection icon={Lightbulb} title="My Solution" body={project.solution || "N/A"} />
                 <CaseSection icon={TrendingUp} title="The Result" body={project.result || 'Result details coming soon.'} />
 
                 {project.tools && project.tools.length > 0 && (
