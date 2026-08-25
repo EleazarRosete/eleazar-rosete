@@ -339,7 +339,9 @@ export default function ProjectCaseModal({ project, meta, onClose, onMessageClic
   );
 }
 
-function CaseSection({ icon: Icon, title, body }: { icon: typeof AlertCircle; title: string; body: string }) {
+function CaseSection({ icon: Icon, title, body }: { icon: typeof AlertCircle; title: string; body: string | string[] }) {
+  const items = Array.isArray(body) ? body : null;
+
   return (
     <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
       <span style={{
@@ -349,9 +351,25 @@ function CaseSection({ icon: Icon, title, body }: { icon: typeof AlertCircle; ti
       }}>
         <Icon size={13} color="var(--text-primary)" />
       </span>
-      <div>
+      <div style={{ minWidth: 0 }}>
         <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: 3 }}>{title}</span>
-        <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: 0 }}>{body}</p>
+        {items ? (
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {items.map((item, i) => (
+              <li key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                <span style={{
+                  width: 5, height: 5, borderRadius: '50%', flexShrink: 0,
+                  marginTop: 7, background: 'var(--accent-violet)',
+                }} />
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', lineHeight: 1.55, margin: 0 }}>{body}</p>
+        )}
       </div>
     </div>
   );
