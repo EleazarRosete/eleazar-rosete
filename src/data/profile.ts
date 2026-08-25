@@ -14,7 +14,7 @@ export const NOTE_TEXT = "Let's work together";
 export const AVAILABLE_TEXT = 'Available';
 export const HERO_ROLE = 'CRM Specialist | Automation, Data Management & Remote Support';
 export const HERO_TAGLINE =
-  "IT graduate who builds tools and systems that make work run smoother. I've managed CRM pipelines end-to-end, built and deployed a business website from scratch, handled HIPAA-compliant client support at a US insurance BPO, and provided full executive/admin support including document editing and photo/video work. I code in Python, build automations with n8n and custom tools, and I'm comfortable picking up whatever a workflow needs — data entry, transcription, content creation, or technical documentation. Fully remote, detail-obsessed, and quick to adapt.";
+  "IT graduate who builds tools and systems that make work run smoother. I've managed CRM pipelines end-to-end, built a business website from scratch, and provided HIPAA-compliant client support at a US insurance BPO — plus executive support, transcription, and automation work using Python and n8n. Fully remote, detail-obsessed, and quick to adapt to whatever a workflow needs.";
 
 export interface HeroStat {
   num: string;
